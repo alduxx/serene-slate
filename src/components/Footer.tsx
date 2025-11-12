@@ -25,7 +25,7 @@ const Footer = () => {
         {/* Signature Style Section */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="inline-block border-2 border-foreground px-4 py-1 mb-8">
-            <span className="font-display text-sm tracking-wider uppercase">An Outro</span>
+            <span className="font-display text-sm tracking-wider uppercase">Sobre</span>
           </div>
           
           <div className="text-center mb-12">
@@ -38,7 +38,7 @@ const Footer = () => {
 
           {/* Signature */}
           <div className="text-center mb-12">
-            <p className="font-display text-5xl mb-2">Bryant</p>
+            <p className="font-display text-5xl mb-2">Aldo</p>
             <div className="w-32 h-1 bg-primary mx-auto"></div>
           </div>
         </div>
@@ -73,7 +73,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Seu Nome. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Aldo Monteiro. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

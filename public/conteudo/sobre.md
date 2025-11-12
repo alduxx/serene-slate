@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-# An Outro
+# Sobre
 
 ## The personal musings of Bryant Brytan, but without the pressure of authentic fanboyism
 
@@ -20,4 +20,4 @@ If you want to chat, I'd love to hear from you! I'm pretty good at responding qu
 
 **Good Design,**
 
-*Bryant*
+*Aldo*
