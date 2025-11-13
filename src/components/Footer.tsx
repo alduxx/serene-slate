@@ -65,6 +65,53 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Social Links */}
+        <div className="flex justify-center gap-6 mb-8">
+          <a 
+            href="https://instagram.com/b_aldo" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+            <span className="text-sm">@b_aldo</span>
+          </a>
+          <a 
+            href="mailto:eu@aldomonteiro.com.br"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <rect width="20" height="20" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span className="text-sm">eu@aldomonteiro.com.br</span>
+          </a>
+        </div>
+
         {/* Copyright */}
         <div className="text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Aldo Monteiro. Todos os direitos reservados.</p>
