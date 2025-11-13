@@ -49,7 +49,7 @@ const Footer = () => {
             <div className="text-4xl font-display font-bold mb-2">
               {(stats.totalWords / 1000).toFixed(1)}K
             </div>
-            <div className="text-sm uppercase tracking-wider">Total Words</div>
+            <div className="text-sm uppercase tracking-wider">Palavras Totais</div>
           </div>
           <div className="text-center border-2 border-foreground p-6">
             <div className="text-4xl font-display font-bold mb-2">
