@@ -4,7 +4,7 @@ title: "About"
 
 # Sobre
 
-## The personal musings of Bryant Brytan, but without the pressure of authentic fanboyism
+## The personal musings of Aldo Monteiro, but without the pressure of authentic fanboyism
 
 I don't buy hype words, walking up early, doing productive weekends, exploiting cities with my wife, and exploring what it means for me to do work that I love, and what it means to love the notion of loving what you do, and doing what you love.
 
