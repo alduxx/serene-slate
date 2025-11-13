@@ -44,18 +44,12 @@ const Footer = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
           <div className="text-center border-2 border-foreground p-6">
             <div className="text-4xl font-display font-bold mb-2">
               {(stats.totalWords / 1000).toFixed(1)}K
             </div>
             <div className="text-sm uppercase tracking-wider">Total Words</div>
-          </div>
-          <div className="text-center border-2 border-foreground p-6">
-            <div className="text-4xl font-display font-bold mb-2">
-              {stats.avgReadTime.toFixed(1)}
-            </div>
-            <div className="text-sm uppercase tracking-wider">Avg Read Time (min)</div>
           </div>
           <div className="text-center border-2 border-foreground p-6">
             <div className="text-4xl font-display font-bold mb-2">
