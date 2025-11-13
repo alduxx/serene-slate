@@ -33,7 +33,7 @@ const ArtigosList = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 animate-fade-in">
           <div className="inline-block border-2 border-foreground px-4 py-1 mb-6">
-            <span className="font-display text-sm tracking-wider uppercase">The Latest</span>
+            <span className="font-display text-sm tracking-wider uppercase">Pensamentos</span>
           </div>
           <h2 className="font-display text-5xl md:text-6xl font-bold mb-4">
             Artigos Recentes
