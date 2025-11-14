@@ -1,12 +1,8 @@
-*---*
-
-*title: "De Joelhos"*
-
-*date: "2025-14-11"*
-
-*excerpt: "Florbela Espanca"*
-
-*---*
+---
+title: De Joelhos
+date: 2025-11-14
+excerpt: Florbela Espanca
+---
 
 Bendita seja a Mãe que te gerou.
 Bendito o leite que te fez crescer.  
@@ -25,4 +21,3 @@ Numa grande paixão fervente e louca!
 E se mais que eu, um dia, te quiser
 Alguém, bendita seja essa Mulher,
 Bendito seja o beijo dessa boca!!
-
