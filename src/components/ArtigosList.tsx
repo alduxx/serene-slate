@@ -60,13 +60,17 @@ const ArtigosList = () => {
                     day: 'numeric'
                   })}</time>
                 </div>
-                <CardTitle className="font-display text-3xl mb-3 group-hover:text-primary transition-colors">
-                  {artigo.frontmatter.title}
-                </CardTitle>
+                <Link to={`/artigos/${artigo.slug}`}>
+                  <CardTitle className="font-display text-3xl mb-3 group-hover:text-primary transition-colors cursor-pointer">
+                    {artigo.frontmatter.title}
+                  </CardTitle>
+                </Link>
                 {artigo.frontmatter.excerpt && (
-                  <CardDescription className="text-base leading-relaxed">
-                    {artigo.frontmatter.excerpt}
-                  </CardDescription>
+                  <Link to={`/artigos/${artigo.slug}`}>
+                    <CardDescription className="text-base leading-relaxed cursor-pointer hover:text-foreground transition-colors">
+                      {artigo.frontmatter.excerpt}
+                    </CardDescription>
+                  </Link>
                 )}
               </CardHeader>
               <CardContent>

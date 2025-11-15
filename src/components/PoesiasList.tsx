@@ -59,13 +59,17 @@ const PoesiasList = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <CardHeader>
-                <CardTitle className="font-display text-2xl mb-2 group-hover:text-primary transition-colors">
-                  {poesia.frontmatter.title}
-                </CardTitle>
+                <Link to={`/poesias/${poesia.slug}`}>
+                  <CardTitle className="font-display text-2xl mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                    {poesia.frontmatter.title}
+                  </CardTitle>
+                </Link>
                 {poesia.frontmatter.excerpt && (
-                  <CardDescription className="text-sm italic">
-                    {poesia.frontmatter.excerpt}
-                  </CardDescription>
+                  <Link to={`/poesias/${poesia.slug}`}>
+                    <CardDescription className="text-sm italic cursor-pointer hover:text-foreground transition-colors">
+                      {poesia.frontmatter.excerpt}
+                    </CardDescription>
+                  </Link>
                 )}
               </CardHeader>
               <CardContent>
