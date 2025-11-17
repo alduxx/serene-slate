@@ -13,25 +13,36 @@ export interface MarkdownContent {
   slug: string;
 }
 
-// Load markdown files at build time using Vite's glob import
-const artigosModules = import.meta.glob('/public/conteudo/artigos/*.md', { 
-  query: '?raw', 
-  import: 'default' 
-});
+interface Manifest {
+  artigos: string[];
+  poesias: string[];
+  sobre: string;
+}
 
-const poesiasModules = import.meta.glob('/public/conteudo/poesias/*.md', { 
-  query: '?raw', 
-  import: 'default' 
-});
+let manifestCache: Manifest | null = null;
 
-const sobreModule = import.meta.glob('/public/conteudo/sobre.md', { 
-  query: '?raw', 
-  import: 'default' 
-});
+async function getManifest(): Promise<Manifest> {
+  if (manifestCache) return manifestCache;
+  
+  const response = await fetch('/conteudo/manifest.json');
+  if (!response.ok) {
+    throw new Error('Não foi possível carregar o manifest');
+  }
+  
+  manifestCache = await response.json();
+  return manifestCache;
+}
 
-async function parseMarkdown(filePath: string, rawContent: string): Promise<MarkdownContent> {
+async function fetchMarkdown(path: string): Promise<string> {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Não foi possível carregar ${path}`);
+  }
+  return response.text();
+}
+
+async function parseMarkdown(slug: string, rawContent: string): Promise<MarkdownContent> {
   const { data, content } = matter(rawContent);
-  const slug = filePath.split('/').pop()?.replace('.md', '') || '';
   
   return {
     frontmatter: data as MarkdownFrontmatter,
@@ -41,10 +52,12 @@ async function parseMarkdown(filePath: string, rawContent: string): Promise<Mark
 }
 
 export async function getArtigos(): Promise<MarkdownContent[]> {
+  const manifest = await getManifest();
+  
   const artigos = await Promise.all(
-    Object.entries(artigosModules).map(async ([path, resolver]) => {
-      const content = await resolver() as string;
-      return parseMarkdown(path, content);
+    manifest.artigos.map(async (slug) => {
+      const rawContent = await fetchMarkdown(`/conteudo/artigos/${slug}.md`);
+      return parseMarkdown(slug, rawContent);
     })
   );
   
@@ -55,10 +68,12 @@ export async function getArtigos(): Promise<MarkdownContent[]> {
 }
 
 export async function getPoesias(): Promise<MarkdownContent[]> {
+  const manifest = await getManifest();
+  
   const poesias = await Promise.all(
-    Object.entries(poesiasModules).map(async ([path, resolver]) => {
-      const content = await resolver() as string;
-      return parseMarkdown(path, content);
+    manifest.poesias.map(async (slug) => {
+      const rawContent = await fetchMarkdown(`/conteudo/poesias/${slug}.md`);
+      return parseMarkdown(slug, rawContent);
     })
   );
   
@@ -68,20 +83,28 @@ export async function getPoesias(): Promise<MarkdownContent[]> {
 }
 
 export async function getArtigoBySlug(slug: string): Promise<MarkdownContent | null> {
-  const artigos = await getArtigos();
-  return artigos.find(a => a.slug === slug) || null;
+  try {
+    const rawContent = await fetchMarkdown(`/conteudo/artigos/${slug}.md`);
+    return parseMarkdown(slug, rawContent);
+  } catch {
+    return null;
+  }
 }
 
 export async function getPoesiaBySlug(slug: string): Promise<MarkdownContent | null> {
-  const poesias = await getPoesias();
-  return poesias.find(p => p.slug === slug) || null;
+  try {
+    const rawContent = await fetchMarkdown(`/conteudo/poesias/${slug}.md`);
+    return parseMarkdown(slug, rawContent);
+  } catch {
+    return null;
+  }
 }
 
 export async function getSobre(): Promise<MarkdownContent | null> {
-  const entries = Object.entries(sobreModule);
-  if (entries.length === 0) return null;
-  
-  const [path, resolver] = entries[0];
-  const content = await resolver() as string;
-  return parseMarkdown(path, content);
+  try {
+    const rawContent = await fetchMarkdown('/conteudo/sobre.md');
+    return parseMarkdown('sobre', rawContent);
+  } catch {
+    return null;
+  }
 }
