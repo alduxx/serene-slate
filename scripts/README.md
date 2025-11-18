@@ -58,18 +58,3 @@ O site agora carrega os arquivos markdown **dinamicamente em runtime** via fetch
 | Novo artigo/poesia | `node scripts/generate-manifest.js` + copiar | ~5s |
 | Editar artigo/poesia | apenas copiar | ~2s |
 | Mudança no código/design | `npm run build` completo | ~1-2min |
-
-## Adicionar ao package.json
-
-Para facilitar, você pode adicionar estes scripts ao `package.json`:
-
-```json
-"scripts": {
-  "build:content": "node scripts/generate-manifest.js",
-  "update:content": "bash scripts/update-content.sh"
-}
-```
-
-Então poderá usar:
-- `npm run build:content` - gera o manifest
-- `npm run update:content` - atualiza tudo no servidor

@@ -12,5 +12,3 @@ echo "📤 Copiando arquivos para o servidor..."
 sudo cp -r public/conteudo/* /var/www/aldomonteiro.com.br/conteudo/
 
 echo "✅ Conteúdo atualizado com sucesso!"
-echo ""
-echo "⚠️  Nota: Se você adicionou novos arquivos markdown, execute 'npm run build:content' primeiro"
