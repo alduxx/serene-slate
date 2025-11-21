@@ -6,17 +6,29 @@ const Footer = () => {
   const [stats, setStats] = useState({
     artigos: 0,
     poesias: 0,
-    totalWords: 6900, // Approximate
-    avgReadTime: 0.8, // minutes per 100 words
+    totalWords: 0,
   });
 
   useEffect(() => {
     Promise.all([getArtigos(), getPoesias()]).then(([artigos, poesias]) => {
-      setStats(prev => ({
-        ...prev,
+      // Count words from all content
+      const countWords = (text: string) => {
+        return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+      };
+
+      const artigosWords = artigos.reduce((total, artigo) => {
+        return total + countWords(artigo.content);
+      }, 0);
+
+      const poesiasWords = poesias.reduce((total, poesia) => {
+        return total + countWords(poesia.content);
+      }, 0);
+
+      setStats({
         artigos: artigos.length,
         poesias: poesias.length,
-      }));
+        totalWords: artigosWords + poesiasWords,
+      });
     });
   }, []);
 
