@@ -11,12 +11,21 @@ const Index = () => {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      setTimeout(() => {
+      const scrollToSection = () => {
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const yOffset = -20;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
-      }, 100);
+      };
+      
+      // Try immediately
+      setTimeout(scrollToSection, 0);
+      // Try again after render
+      setTimeout(scrollToSection, 100);
+      // Final attempt
+      setTimeout(scrollToSection, 500);
     }
   }, [location]);
 
