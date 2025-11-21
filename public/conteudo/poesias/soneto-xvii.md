@@ -4,8 +4,6 @@ date: 2025-11-18
 excerpt: Pablo Neruda
 ---
 
-Soneto XVII
-
 No te amo como si fueras rosa de sal, topacio
 o flecha de claveles que propagan el fuego:
 te amo como se aman ciertas cosas oscuras,
