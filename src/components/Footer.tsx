@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArtigos, getPoesias } from "@/lib/markdown";
 import { Instagram, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [stats, setStats] = useState({
@@ -64,18 +65,22 @@ const Footer = () => {
             </div>
             <div className="text-sm uppercase tracking-wider">Palavras Totais</div>
           </div>
-          <div className="text-center border-2 border-foreground p-6">
-            <div className="text-4xl font-display font-bold mb-2">
-              {stats.artigos}
+          <Link to="/#artigos">
+            <div className="text-center border-2 border-foreground p-6 hover:bg-accent/30 hover:border-primary transition-all duration-300 cursor-pointer">
+              <div className="text-4xl font-display font-bold mb-2">
+                {stats.artigos}
+              </div>
+              <div className="text-sm uppercase tracking-wider">Artigos</div>
             </div>
-            <div className="text-sm uppercase tracking-wider">Artigos</div>
-          </div>
-          <div className="text-center border-2 border-foreground p-6">
-            <div className="text-4xl font-display font-bold mb-2">
-              {stats.poesias}
+          </Link>
+          <Link to="/#poesias">
+            <div className="text-center border-2 border-foreground p-6 hover:bg-accent/30 hover:border-primary transition-all duration-300 cursor-pointer">
+              <div className="text-4xl font-display font-bold mb-2">
+                {stats.poesias}
+              </div>
+              <div className="text-sm uppercase tracking-wider">Poesias</div>
             </div>
-            <div className="text-sm uppercase tracking-wider">Poesias</div>
-          </div>
+          </Link>
         </div>
 
         {/* Social Links */}
