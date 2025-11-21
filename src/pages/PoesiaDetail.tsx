@@ -13,13 +13,7 @@ const PoesiaDetail = () => {
   const [loading, setLoading] = useState(true);
 
   const handleBackToPoesias = () => {
-    navigate('/');
-    setTimeout(() => {
-      const poesiasSection = document.getElementById('poesias');
-      if (poesiasSection) {
-        poesiasSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 300);
+    navigate('/#poesias');
   };
 
   useEffect(() => {
