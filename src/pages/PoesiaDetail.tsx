@@ -17,9 +17,11 @@ const PoesiaDetail = () => {
     setTimeout(() => {
       const poesiasSection = document.getElementById('poesias');
       if (poesiasSection) {
-        poesiasSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const yOffset = -80; // Offset for header
+        const y = poesiasSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    }, 100);
+    }, 200);
   };
 
   useEffect(() => {
