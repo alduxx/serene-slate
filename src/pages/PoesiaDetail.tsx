@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getPoesiaBySlug, type MarkdownContent } from "@/lib/markdown";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,19 @@ import diagonalTexture from "@/assets/diagonal-texture.jpg";
 
 const PoesiaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const [poesia, setPoesia] = useState<MarkdownContent | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleBackToPoesias = () => {
+    navigate('/');
+    setTimeout(() => {
+      const poesiasSection = document.getElementById('poesias');
+      if (poesiasSection) {
+        poesiasSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
 
   useEffect(() => {
     if (slug) {
@@ -97,12 +108,15 @@ const PoesiaDetail = () => {
 
           {/* Back to poetry */}
           <div className="mt-16 text-center">
-            <Link to="/#poesias">
-              <Button variant="outline" size="lg" className="gap-2 bg-card/80 backdrop-blur">
-                <ArrowLeft className="w-4 h-4" />
-                Ver todas as poesias
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="gap-2 bg-card/80 backdrop-blur"
+              onClick={handleBackToPoesias}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Ver todas as poesias
+            </Button>
           </div>
         </div>
       </article>
