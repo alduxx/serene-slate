@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getArtigoBySlug, type MarkdownContent } from "@/lib/markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,8 +9,19 @@ import { Badge } from "@/components/ui/badge";
 
 const ArtigoDetail = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const [artigo, setArtigo] = useState<MarkdownContent | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleBackToArticles = () => {
+    navigate('/');
+    setTimeout(() => {
+      const artigosSection = document.getElementById('artigos');
+      if (artigosSection) {
+        artigosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
 
   useEffect(() => {
     if (slug) {
@@ -92,12 +103,15 @@ const ArtigoDetail = () => {
 
           {/* Back to articles */}
           <div className="mt-16 pt-8 border-t-2 border-border">
-            <Link to="/#artigos">
-              <Button variant="outline" size="lg" className="gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Ver todos os artigos
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="gap-2"
+              onClick={handleBackToArticles}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Ver todos os artigos
+            </Button>
           </div>
         </div>
       </article>
