@@ -12,17 +12,17 @@ Uma geração que está aprendendo, em tempo real, a transitar entre dois mundos
 
 Nesse cenário, a estabilidade cognitiva já não existe mais.  Precisamos trabalhar de forma constante, em iterações. Ajustar, revisar, reaprender, experimentar, desapegar. Com cada nova onda tecnológica, principalmente com a inteligência artificial, somos instigados a responder três questões essenciais:  
   
-1. 1. Qual é o rumo que o mundo está tomando?  
-2. 2. Em que lugar o valor será gerado?  
-3. 3. Como posso me envolver?
+1. Qual é o rumo que o mundo está tomando?
+2. Em que lugar o valor será gerado?
+3. Como posso me envolver?
 
 Mas para responder a essas perguntas, precisamos desenvolver uma habilidade quase invisível, porém decisiva: a re-percepção.
 
 ## Re-percepção: ver o que sempre esteve ali
 Em um mundo repleto de informações, existem dois tipos essenciais de estímulos:  
   
-- **Sinais** — o que de fato aponta para transformações profundas.  
-* **Ruídos** — tudo o mais: hype, tendências passageiras, boatos, alarmes falsos.
+- **Sinais** — o que de fato aponta para transformações profundas.
+- **Ruídos** — tudo o mais: hype, tendências passageiras, boatos, alarmes falsos.
 
 A re-percepção é, precisamente, a habilidade de reconhecer sinais significativos que a maioria das pessoas não nota.  Não é uma questão de ver mais, mas de ver de forma diferente.  
   
