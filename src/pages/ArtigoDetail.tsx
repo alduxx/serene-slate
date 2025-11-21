@@ -14,13 +14,7 @@ const ArtigoDetail = () => {
   const [loading, setLoading] = useState(true);
 
   const handleBackToArticles = () => {
-    navigate('/');
-    setTimeout(() => {
-      const artigosSection = document.getElementById('artigos');
-      if (artigosSection) {
-        artigosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
+    navigate('/#artigos');
   };
 
   useEffect(() => {
