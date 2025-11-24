@@ -58,12 +58,17 @@ const PoesiaDetail = () => {
       {/* Header */}
       <header className="border-b-2 border-border py-6 sticky top-0 bg-background/95 backdrop-blur z-50">
         <div className="container mx-auto px-6">
-          <Link to="/">
-            <Button variant="ghost" className="gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Voltar
-            </Button>
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link to="/">
+              <Button variant="ghost" className="gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
+              </Button>
+            </Link>
+            <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
+              Aldo Monteiro
+            </Link>
+          </div>
         </div>
       </header>
 
