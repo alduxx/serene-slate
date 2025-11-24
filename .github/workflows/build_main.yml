@@ -34,5 +34,5 @@ jobs:
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
         source: "dist/*"
-        target: "/home/ubuntu/aldomonteiro.com.br/dist"
+        target: "/var/www/aldomonteiro.com.br"
         strip_components: 1
