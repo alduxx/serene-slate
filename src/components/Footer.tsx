@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArtigos, getPoesias } from "@/lib/markdown";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -100,6 +100,15 @@ const Footer = () => {
             aria-label="Instagram"
           >
             <Instagram size={20} />
+          </a>
+          <a 
+            href="https://github.com/alduxx" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300"
+            aria-label="GitHub"
+          >
+            <Github size={20} />
           </a>
         </div>
 
