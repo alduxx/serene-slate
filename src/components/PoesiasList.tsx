@@ -11,7 +11,8 @@ const PoesiasList = () => {
 
   useEffect(() => {
     getPoesias().then((data) => {
-      setPoesias(data);
+      // Mostrar apenas as 3 poesias mais recentes
+      setPoesias(data.slice(0, 3));
       setLoading(false);
     });
   }, []);
@@ -78,6 +79,15 @@ const PoesiasList = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Ver Todas Link */}
+        <div className="flex justify-center mt-12 mb-8">
+          <Link to="/poesias">
+            <Button variant="outline" size="lg" className="font-display">
+              Ver todas as poesias →
+            </Button>
+          </Link>
         </div>
 
         {/* Decorative Diamond */}

@@ -12,7 +12,8 @@ const ArtigosList = () => {
 
   useEffect(() => {
     getArtigos().then((data) => {
-      setArtigos(data);
+      // Mostrar apenas os 2 artigos mais recentes
+      setArtigos(data.slice(0, 2));
       setLoading(false);
     });
   }, []);
@@ -85,6 +86,15 @@ const ArtigosList = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Ver Todos Link */}
+        <div className="flex justify-center mt-12">
+          <Link to="/artigos">
+            <Button variant="outline" size="lg" className="font-display">
+              Ver todos os artigos →
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

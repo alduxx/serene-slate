@@ -1,0 +1,119 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getPoesias, type MarkdownContent } from "@/lib/markdown";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
+import Footer from "@/components/Footer";
+import diagonalTexture from "@/assets/diagonal-texture.jpg";
+
+const Poesias = () => {
+  const [poesias, setPoesias] = useState<MarkdownContent[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getPoesias().then((data) => {
+      setPoesias(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-6 py-24">
+          <div className="text-center">Carregando poesias...</div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="border-b border-border bg-background/95 backdrop-blur sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link to="/">
+            <Button variant="ghost" className="gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              Voltar
+            </Button>
+          </Link>
+          <Link to="/" className="font-display text-xl">
+            Aldo Monteiro
+          </Link>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <section 
+        className="py-24 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(207,234,236,0.3), rgba(168,227,230,0.2)), url(${diagonalTexture})`,
+          backgroundSize: 'cover',
+          backgroundBlendMode: 'overlay',
+        }}
+      >
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Section Header */}
+          <div className="max-w-3xl mb-16 animate-fade-in">
+            <div className="inline-block border-2 border-foreground px-4 py-1 mb-6">
+              <span className="font-display text-sm tracking-wider uppercase">Todas as Poesias</span>
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">
+              Poesias
+            </h1>
+            <p className="text-xl text-muted-foreground">
+              {poesias.length} {poesias.length === 1 ? 'poesia publicada' : 'poesias publicadas'}
+            </p>
+          </div>
+
+          {/* Poetry Grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {poesias.map((poesia, index) => (
+              <Card 
+                key={poesia.slug}
+                className="hover:shadow-xl transition-all duration-300 bg-card/95 backdrop-blur border-2 animate-fade-in group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader>
+                  <Link to={`/poesias/${poesia.slug}`}>
+                    <CardTitle className="font-display text-2xl mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                      {poesia.frontmatter.title}
+                    </CardTitle>
+                  </Link>
+                  {poesia.frontmatter.excerpt && (
+                    <Link to={`/poesias/${poesia.slug}`}>
+                      <CardDescription className="text-sm italic cursor-pointer hover:text-foreground transition-colors">
+                        {poesia.frontmatter.excerpt}
+                      </CardDescription>
+                    </Link>
+                  )}
+                </CardHeader>
+                <CardContent>
+                  <Link to={`/poesias/${poesia.slug}`}>
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-start text-primary hover:text-primary/80 hover:bg-transparent p-0"
+                    >
+                      Ler poesia →
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Decorative Diamond */}
+          <div className="flex justify-center my-16">
+            <div className="w-16 h-16 bg-accent rotate-45 shadow-lg"></div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Poesias;
