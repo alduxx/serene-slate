@@ -4,17 +4,50 @@ import { getArtigoBySlug, type MarkdownContent } from "@/lib/markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CalendarDays } from "lucide-react";
+import { ArrowLeft, CalendarDays, Share2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
 const ArtigoDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [artigo, setArtigo] = useState<MarkdownContent | null>(null);
   const [loading, setLoading] = useState(true);
 
   const handleBackToArticles = () => {
     navigate('/#artigos');
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = artigo?.frontmatter.title || 'Artigo';
+    const text = artigo?.frontmatter.excerpt || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Erro ao compartilhar:', err);
+        }
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        toast({
+          title: "Link copiado!",
+          description: "O link foi copiado para a área de transferência.",
+        });
+      } catch (err) {
+        console.error('Erro ao copiar link:', err);
+        toast({
+          title: "Erro ao copiar",
+          description: "Não foi possível copiar o link.",
+          variant: "destructive",
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -59,9 +92,14 @@ const ArtigoDetail = () => {
                 Voltar
               </Button>
             </Link>
-            <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
-              Aldo Monteiro
-            </Link>
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" onClick={handleShare}>
+                <Share2 className="w-5 h-5" />
+              </Button>
+              <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
+                Aldo Monteiro
+              </Link>
+            </div>
           </div>
         </div>
       </header>
