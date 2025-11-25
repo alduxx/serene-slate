@@ -42,12 +42,6 @@ const PoesiasList = () => {
           <div className="inline-block border-2 border-foreground px-4 py-1 mb-6">
             <span className="font-display text-sm tracking-wider uppercase">Poemas Selecionados</span>
           </div>
-          <h2 className="font-display text-5xl md:text-6xl font-bold mb-4">
-            Poesias
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Versos sobre silêncio, montanhas e os espaços entre palavras
-          </p>
         </div>
 
         {/* Poetry Grid */}
