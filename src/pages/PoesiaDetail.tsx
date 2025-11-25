@@ -98,14 +98,9 @@ const PoesiaDetail = () => {
                 Voltar
               </Button>
             </Link>
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" onClick={handleShare}>
-                <Share2 className="w-5 h-5" />
-              </Button>
-              <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
-                Aldo Monteiro
-              </Link>
-            </div>
+            <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
+              Aldo Monteiro
+            </Link>
           </div>
         </div>
       </header>
@@ -120,10 +115,18 @@ const PoesiaDetail = () => {
             </h1>
             
             {poesia.frontmatter.excerpt && (
-              <p className="text-center text-muted-foreground italic mb-12 text-lg">
+              <p className="text-center text-muted-foreground italic mb-8 text-lg">
                 {poesia.frontmatter.excerpt}
               </p>
             )}
+
+            {/* Share button */}
+            <div className="flex justify-center mb-8">
+              <Button variant="outline" size="sm" onClick={handleShare} className="gap-2">
+                <Share2 className="w-4 h-4" />
+                Compartilhar
+              </Button>
+            </div>
 
             {/* Decorative line */}
             <div className="w-24 h-1 bg-primary mx-auto mb-12"></div>
