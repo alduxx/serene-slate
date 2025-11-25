@@ -3,17 +3,50 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { getPoesiaBySlug, type MarkdownContent } from "@/lib/markdown";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Share2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import diagonalTexture from "@/assets/diagonal-texture.jpg";
 
 const PoesiaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [poesia, setPoesia] = useState<MarkdownContent | null>(null);
   const [loading, setLoading] = useState(true);
 
   const handleBackToPoesias = () => {
     navigate('/#poesias');
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = poesia?.frontmatter.title || 'Poesia';
+    const text = poesia?.frontmatter.excerpt || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Erro ao compartilhar:', err);
+        }
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url);
+        toast({
+          title: "Link copiado!",
+          description: "O link foi copiado para a área de transferência.",
+        });
+      } catch (err) {
+        console.error('Erro ao copiar link:', err);
+        toast({
+          title: "Erro ao copiar",
+          description: "Não foi possível copiar o link.",
+          variant: "destructive",
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -65,9 +98,14 @@ const PoesiaDetail = () => {
                 Voltar
               </Button>
             </Link>
-            <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
-              Aldo Monteiro
-            </Link>
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" onClick={handleShare}>
+                <Share2 className="w-5 h-5" />
+              </Button>
+              <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
+                Aldo Monteiro
+              </Link>
+            </div>
           </div>
         </div>
       </header>
