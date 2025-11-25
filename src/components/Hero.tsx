@@ -26,7 +26,7 @@ const Hero = () => {
           </h1>
           
           {/* Bio */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light">Escrevo neste site artigos sobre temas que despertam meu interesse e que me ajudam a praticar minha escrita. Também coleciono poesias que considero que merecem ser compartilhadas com o mundo.</p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light">Este site é um repositório pessoal de temas que despertam meu interesse e que me ajudam a praticar a escrita, além de reunir poesias selecionadas que devem ser compartilhar com o mundo.</p>
           
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center">
