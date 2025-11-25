@@ -36,6 +36,12 @@ const ArtigosList = () => {
           <div className="inline-block border-2 border-foreground px-4 py-1 mb-6">
             <span className="font-display text-sm tracking-wider uppercase">Artigos Recentes</span>
           </div>
+          <h2 className="font-display text-5xl leading-tight mb-4">
+            Reflexões e Pensamentos
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Explorando ideias sobre tecnologia, criatividade e vida através da escrita.
+          </p>
         </div>
 
         {/* Articles Grid */}
