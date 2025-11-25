@@ -30,7 +30,7 @@ const PoesiasList = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 animate-fade-in">
           <div className="inline-block border-2 border-foreground px-4 py-1 mb-6">
-            <span className="font-display text-sm tracking-wider uppercase">POESIAS SELECIONADOS</span>
+            <span className="font-display text-sm tracking-wider uppercase">POESIAS SELECIONADAS</span>
           </div>
         </div>
 
