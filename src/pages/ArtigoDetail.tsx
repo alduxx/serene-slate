@@ -92,14 +92,9 @@ const ArtigoDetail = () => {
                 Voltar
               </Button>
             </Link>
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" onClick={handleShare}>
-                <Share2 className="w-5 h-5" />
-              </Button>
-              <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
-                Aldo Monteiro
-              </Link>
-            </div>
+            <Link to="/" className="font-display text-2xl md:text-3xl font-bold hover:text-primary transition-colors">
+              Aldo Monteiro
+            </Link>
           </div>
         </div>
       </header>
@@ -120,15 +115,21 @@ const ArtigoDetail = () => {
               </div>
             </div>
             
-            {artigo.frontmatter.tags && (
-              <div className="flex gap-2 flex-wrap mb-6">
-                {artigo.frontmatter.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            )}
+            <div className="flex items-center justify-between mb-6">
+              {artigo.frontmatter.tags && (
+                <div className="flex gap-2 flex-wrap">
+                  {artigo.frontmatter.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <Button variant="outline" size="sm" onClick={handleShare} className="gap-2 ml-4">
+                <Share2 className="w-4 h-4" />
+                Compartilhar
+              </Button>
+            </div>
           </div>
 
           {/* Content */}
