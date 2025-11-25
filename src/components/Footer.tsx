@@ -2,48 +2,38 @@ import { useEffect, useState } from "react";
 import { getArtigos, getPoesias } from "@/lib/markdown";
 import { Instagram, Mail, Github } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Footer = () => {
   const [stats, setStats] = useState({
     artigos: 0,
     poesias: 0,
-    totalWords: 0,
+    totalWords: 0
   });
-
   useEffect(() => {
     Promise.all([getArtigos(), getPoesias()]).then(([artigos, poesias]) => {
       // Count words from all content
       const countWords = (text: string) => {
         return text.trim().split(/\s+/).filter(word => word.length > 0).length;
       };
-
       const artigosWords = artigos.reduce((total, artigo) => {
         return total + countWords(artigo.content);
       }, 0);
-
       const poesiasWords = poesias.reduce((total, poesia) => {
         return total + countWords(poesia.content);
       }, 0);
-
       setStats({
         artigos: artigos.length,
         poesias: poesias.length,
-        totalWords: artigosWords + poesiasWords,
+        totalWords: artigosWords + poesiasWords
       });
     });
   }, []);
-
-  return (
-    <footer className="bg-accent/20 py-16 border-t-2 border-accent">
+  return <footer className="bg-accent/20 py-16 border-t-2 border-accent">
       <div className="container mx-auto px-6">
         {/* Signature Style Section */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="text-center mb-12">
             <h3 className="font-display text-4xl mb-4">Obrigado pela visita</h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Se você gostou do que leu, sinta-se à vontade para compartilhar. 
-              Estou sempre explorando novas ideias e perspectivas.
-            </p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Se você gostou do que leu, sinta-se à vontade para compartilhar.</p>
           </div>
 
           {/* Signature */}
@@ -81,29 +71,13 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="flex justify-center gap-4 mb-8">
-          <a 
-            href="mailto:eu@aldomonteiro.com.br"
-            className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300"
-            aria-label="Email"
-          >
+          <a href="mailto:eu@aldomonteiro.com.br" className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300" aria-label="Email">
             <Mail size={20} />
           </a>
-          <a 
-            href="https://instagram.com/b_aldo" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300"
-            aria-label="Instagram"
-          >
+          <a href="https://instagram.com/b_aldo" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300" aria-label="Instagram">
             <Instagram size={20} />
           </a>
-          <a 
-            href="https://github.com/alduxx" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300"
-            aria-label="GitHub"
-          >
+          <a href="https://github.com/alduxx" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent hover:text-primary transition-all duration-300" aria-label="GitHub">
             <Github size={20} />
           </a>
         </div>
@@ -113,8 +87,6 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Aldo Monteiro. Todos os direitos reservados.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
