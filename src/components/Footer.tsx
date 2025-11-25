@@ -38,10 +38,6 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Signature Style Section */}
         <div className="max-w-4xl mx-auto mb-12">
-          <div className="inline-block border-2 border-foreground px-4 py-1 mb-8">
-            <span className="font-display text-sm tracking-wider uppercase">Sobre</span>
-          </div>
-          
           <div className="text-center mb-12">
             <h3 className="font-display text-4xl mb-4">Obrigado pela visita</h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
