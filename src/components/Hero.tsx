@@ -27,7 +27,7 @@ const Hero = () => {
           
           {/* Bio */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light">
-            Escrevo aqui sobre temas que despertam meu interesse e onde coleciono poesias selecionadas.
+            Reflexões sobre criatividade, tecnologia e propósito.
           </p>
           
           {/* CTA Buttons */}
