@@ -40,7 +40,7 @@ const ArtigosList = () => {
             Reflexões e Pensamentos
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Explorando ideias sobre tecnologia, criatividade e vida através da escrita.
+            Explorando ideias sobre tecnologia, criatividade e sobre a vida, através da escrita.
           </p>
         </div>
 
