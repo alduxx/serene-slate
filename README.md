@@ -1,5 +1,7 @@
 # Welcome to your Lovable project
 
+TODO: https://www.jpt.sh/projects/trifold/
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/4ab4d94d-0504-45f0-b9f3-eb9819f47d54
