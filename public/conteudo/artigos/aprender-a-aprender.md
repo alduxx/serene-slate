@@ -76,5 +76,5 @@ Um agricultor experiente sabe que não se pode arar o solo o ano inteiro. O mesm
 - Use IA como **coach** e não como muleta
 - Pare de competir com os outros. Compare-se apenas com quem você foi ontem
 
-<br><br>
-> Aprender bem é comprimir o essencial, lutar com ele conscientemente e dar ao cérebro tempo para consolidar.
+
+> **Aprender bem é comprimir o essencial, lutar com ele conscientemente e dar ao cérebro tempo para consolidar**.
